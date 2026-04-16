@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Zestful Match</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div id="app">
+        <!-- Background Layer -->
+        <div class="background-layer"></div>
+
+        <!-- Loading Screen -->
+        <div id="loading-screen" class="loading-screen">
+            <h1 class="loading-title">Zestful Match</h1>
+            <div class="loading-bar-container">
+                <div id="loading-bar-fill" class="loading-bar-fill"></div>
+            </div>
+            <p id="loading-text" class="loading-text">Loading Assets... 0%</p>
+        </div>
+
+        <!-- Home Screen -->
+        <div id="home-screen" class="home-screen">
+            <img src="assets/images/banner.png" class="main-banner" alt="Zestful Match">
+            <p class="game-subtitle">Match 3 tiles to clear the board!</p>
+            <button id="start-btn" class="play-btn">PLAY</button>
+            <button id="tutorial-btn" class="secondary-btn" style="margin-top: 15px; background: rgba(255, 255, 255, 0.4); color: #C21303; border: 3px solid #fff; padding: 10px 30px; border-radius: 50px; font-size: 1.2rem; cursor: pointer; font-weight: bold; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">HOW TO PLAY</button>
+        </div>
+
+        <!-- UI Layer -->
+        <div id="game-ui" class="ui-layer hidden">
+            <header>
+                <div class="score-container">
+                    <span class="label">SCORE</span>
+                    <span id="score-value">0</span>
+                </div>
+                <div class="level-container">
+                    <span class="label">LEVEL</span>
+                    <span id="level-value">1</span>
+                </div>
+                <button id="settings-btn" class="icon-btn">
+                    <img src="assets/images/SETTING.png" alt="Settings" style="width: 100%; height: 100%; object-fit: contain;">
+                </button>
+            </header>
+
+            <!-- Game Board Area -->
+            <main id="game-board">
+                <!-- Tiles will be injected here by JS -->
+            </main>
+
+            <!-- Bottom Tray Area -->
+            <div id="tray-container">
+                <div id="tile-tray">
+                    <!-- Selected tiles go here -->
+                </div>
+
+                <!-- Power-ups -->
+                <div class="controls-bar">
+                    <button id="btn-undo" class="control-btn" title="Undo">
+                        <img src="assets/images/UNDO.png" class="control-img" alt="Undo">
+                    </button>
+                    <button id="btn-hint" class="control-btn" title="Hint">
+                        <img src="assets/images/HINT.png" class="control-img" alt="Hint">
+                    </button>
+                    <button id="btn-shuffle" class="control-btn" title="Shuffle">
+                        <img src="assets/images/SHUFFLE.png" class="control-img" alt="Shuffle">
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modals -->
+        <div id="modal-overlay" class="hidden">
+            <div id="game-over-modal" class="modal hidden">
+                <h2>Game Over!</h2>
+                <p>Tray is full!</p>
+                <button id="restart-btn" class="primary-btn">Try Again</button>
+            </div>
+
+            <div id="victory-modal" class="modal hidden">
+                <h2>Level Completed!</h2>
+                <div class="stars-container" id="victory-stars"></div>
+                <button id="next-level-btn" class="primary-btn">Next Level</button>
+            </div>
+
+            <div id="settings-modal" class="modal hidden">
+                <h2>Settings</h2>
+                <div class="settings-menu">
+                    <button id="resume-btn" class="primary-btn">Resume</button>
+                    <button id="audio-toggle-btn" class="primary-btn" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); color: #333;">Sound & Music: ON</button>
+                    <button id="restart-settings-btn" class="primary-btn">Restart Level</button>
+                    <button id="quit-btn" class="primary-btn quit-btn">Quit</button>
+                </div>
+            </div>
+
+            <div id="tutorial-modal" class="modal hidden">
+                <h2 id="tutorial-title">How to Play</h2>
+                <div class="tutorial-content" style="min-height: 120px; display: flex; flex-direction: column; justify-content: center; align-items: center; margin: 15px 0;">
+                    <img id="tutorial-icon" src="" alt="Tutorial" style="height: 60px; margin-bottom: 15px; display: none;">
+                    <p id="tutorial-text" style="font-size: 1.1rem; line-height: 1.4;">Tap 3 matching tiles on the board to move them into the tray and clear them.</p>
+                </div>
+                <div class="tutorial-dots" style="display: flex; justify-content: center; gap: 8px; margin-bottom: 20px;">
+                    <span class="dot active" style="width: 10px; height: 10px; background: #FF8E53; border-radius: 50%; transition: 0.3s;"></span>
+                    <span class="dot" style="width: 10px; height: 10px; background: #ccc; border-radius: 50%; transition: 0.3s;"></span>
+                    <span class="dot" style="width: 10px; height: 10px; background: #ccc; border-radius: 50%; transition: 0.3s;"></span>
+                </div>
+                <button id="tutorial-next-btn" class="primary-btn">Next</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/game.js"></script>
+</body>
+
+</html>
